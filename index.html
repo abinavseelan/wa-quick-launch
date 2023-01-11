@@ -112,7 +112,7 @@
         main {
           align-items: flex-end;
           padding: 12px;
-          padding-bottom: 48px;
+          padding-bottom: 96px;
         }
 
         .container {
@@ -207,6 +207,16 @@
         goBtn.removeAttribute("disabled");
       }
 
+      function validatePhoneNumber(phone) {
+        if (!phone.match(phoneRegex)) {
+          disableGoBtn();
+
+          return;
+        }
+
+        enableGoBtn();
+      }
+
       phoneInput.addEventListener("input", (e) => {
         errorBlock.innerHTML = "";
 
@@ -214,13 +224,7 @@
         state.phone = userInput;
         phoneInput.value = userInput;
 
-        if (!userInput.match(phoneRegex)) {
-          disableGoBtn();
-
-          return;
-        }
-
-        enableGoBtn();
+        validatePhoneNumber(userInput);
       });
 
       clipboardBtn.addEventListener("click", async function (e) {
@@ -235,6 +239,8 @@
             if (parsedText.match(phoneRegex)) {
               state.phone = parsedText;
               phoneInput.value = parsedText;
+
+              validatePhoneNumber(parsedText);
             } else {
               errorBlock.innerText = "Not a valid phone number";
             }
