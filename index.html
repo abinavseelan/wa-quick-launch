@@ -100,7 +100,7 @@
       .input-form {
         display: flex;
         justify-content: space-between;
-        flex-grow: 1;
+        width: 100%;
         align-items: center;
       }
 
@@ -118,6 +118,12 @@
         .container {
           /* Fixes issue with overflowing content on safari */
           width: 100%;
+        }
+
+        .phone-input {
+          width: 0;
+          flex-grow: 1;
+          margin-right: 16px;
         }
       }
     </style>
