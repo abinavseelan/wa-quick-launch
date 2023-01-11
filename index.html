@@ -104,11 +104,6 @@
         align-items: center;
       }
 
-      .container {
-        /* Fixes issue with overflowing content on safari */
-        width: 100%;
-      }
-
       @media screen and (max-width: 900px) {
         h1 {
           text-align: center;
@@ -118,6 +113,11 @@
           align-items: flex-end;
           padding: 12px;
           padding-bottom: 48px;
+        }
+
+        .container {
+          /* Fixes issue with overflowing content on safari */
+          width: 100%;
         }
       }
     </style>
