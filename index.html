@@ -25,7 +25,7 @@
       }
 
       h1 {
-        background: -webkit-linear-gradient(#ff6242, #ffb142);
+        background: -webkit-linear-gradient(#ff004a, #8a005e);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
       }
@@ -102,6 +102,18 @@
         justify-content: space-between;
         flex-grow: 1;
         align-items: center;
+      }
+
+      @media screen and (max-width: 900px) {
+        h1 {
+          text-align: center;
+        }
+
+        main {
+          align-items: flex-end;
+          padding: 12px;
+          padding-bottom: 48px;
+        }
       }
     </style>
     <title>Whatsapp Quick Launcher</title>
