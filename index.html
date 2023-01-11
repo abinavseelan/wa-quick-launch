@@ -209,8 +209,10 @@
 
       phoneInput.addEventListener("input", (e) => {
         errorBlock.innerHTML = "";
-        const userInput = e.target.value;
-        state.phone = userInput.trim();
+
+        const userInput = e.target.value.trim().replace(/ /g, "");
+        state.phone = userInput;
+        phoneInput.value = userInput;
 
         if (!userInput.match(phoneRegex)) {
           disableGoBtn();
@@ -226,11 +228,16 @@
 
         try {
           const text = await navigator.clipboard.readText();
-          if (text.match(phoneRegex)) {
-            state.phone = text;
-            phoneInput.value = text;
-          } else {
-            errorBlock.innerText = "Not a valid phone number";
+          if (text) {
+            // Remove spaces
+            const parsedText = text.replace(/ /g, "");
+
+            if (parsedText.match(phoneRegex)) {
+              state.phone = parsedText;
+              phoneInput.value = parsedText;
+            } else {
+              errorBlock.innerText = "Not a valid phone number";
+            }
           }
         } catch (err) {
           console.error(err);
